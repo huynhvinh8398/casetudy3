@@ -135,8 +135,8 @@ public class ProductServlet extends HttpServlet {
          if (image.equals("")){
              errors.add("ảnh sản phẩm chưa được chọn");
          }
-         if (quantity<=0 && quantity < 99){
-             errors.add("số lượng ít nhất là 1 và nhỏ hơn 99");
+         if (quantity<=0 || quantity >9999 ){
+             errors.add("số lượng ít nhất là 1 và nhỏ hơn 9999");
          }
        boolean success = false;
         if (errors.size()==0) {
@@ -176,8 +176,8 @@ public class ProductServlet extends HttpServlet {
             errors.add("tên sản phẩm không được để trống");
         }
 
-        if (quantity <= 0 && quantity < 99) {
-            errors.add("số lượng ít nhất là 1 và nhỏ hơn 99");
+        if (quantity <= 0 || quantity >9999 ) {
+            errors.add("số lượng ít nhất là 1 và bé hơn 9999 ");
         }
         if (image.equals("")) {
             errors.add("ảnh sản phẩm chưa được chọn");

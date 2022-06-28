@@ -51,8 +51,14 @@ public class ProductService implements IProductService{
             "WHERE p.id_product = ?;";
 
     public static String SEARCH_BY_KEY = "" +
-            "SELECT * " +
-            "FROM `products` " +
+            "SELECT  " +
+            "p.id_product, " +
+            "p.product_name, " +
+            "p.price, " +
+            "p.quantity, " +
+            "p.description, " +
+            "p.img " +
+            "FROM `products` As p " +
             "WHERE product_name LIKE ? OR price LIKE ? OR quantity LIKE ?  OR description LIKE ?";
     @Override
     public boolean create(Product product) {
