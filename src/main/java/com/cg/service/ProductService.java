@@ -59,7 +59,7 @@ public class ProductService implements IProductService{
             "p.description, " +
             "p.img " +
             "FROM `products` As p " +
-            "WHERE product_name LIKE ? OR price LIKE ? OR quantity LIKE ?  OR description LIKE ?";
+            "WHERE id_product LIKE ? OR product_name LIKE ? OR price LIKE ? OR quantity LIKE ?  OR description LIKE ?";
     @Override
     public boolean create(Product product) {
         boolean success = false;
@@ -186,6 +186,8 @@ public class ProductService implements IProductService{
             statement.setString(2, '%' + key + '%');
             statement.setString(3, '%' + key + '%');
             statement.setString(4, '%' + key + '%');
+            statement.setString(5, '%' + key + '%');
+
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 int idProduct = rs.getInt("id_product");
