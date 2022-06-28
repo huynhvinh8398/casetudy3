@@ -78,11 +78,11 @@
        <form method="post">
         <div class="form-row">
             <div class="col-6 col-sm-6 form-group">
-                <label for="fullName" class="form-label">FUll name</label>
+                <label for="fullName" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Nhập Fullname">
             </div>
             <div class="col-6 col-sm-6 form-group">
-                <label for="username" class="form-label">User name</label>
+                <label for="username" class="form-label">User Name</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nhập username">
             </div>
             <div class="col-6 col-sm-6 form-group">

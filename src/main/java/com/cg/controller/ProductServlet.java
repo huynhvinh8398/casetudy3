@@ -122,21 +122,24 @@ public class ProductServlet extends HttpServlet {
 
         List<String> errors = new ArrayList<>();
 
-
-        if (price <=0){
+         if (productName.equals("")) {
+             errors.add("tên sản phẩm không được để trống");
+         }
+      else   if (price <=0){
             errors.add("giá sản phẩm phải lớn hơn 0 không được âm");
         }
-        if (price >999999999){
+       else if (price >999999999){
             errors.add("giá sản phẩm vượt giới hạn cho phép");
         }
-        if (productName.equals("")){
-            errors.add("tên sản phẩm không được để trống");
-        }
-         if (image.equals("")){
+
+       else   if (image.equals("")){
              errors.add("ảnh sản phẩm chưa được chọn");
          }
-         if (quantity<=0 || quantity >9999 ){
+       else   if (quantity<=0 || quantity >9999 ){
              errors.add("số lượng ít nhất là 1 và nhỏ hơn 9999");
+         }
+       else if (Category.equals("")){
+           errors.add("loại sách không được để trống");
          }
        boolean success = false;
         if (errors.size()==0) {
@@ -188,9 +191,6 @@ public class ProductServlet extends HttpServlet {
             System.out.println("User info: " + product);
             success = productService.update(product);
         }
-//        System.out.println("User info: " + product);
-//        boolean success =  productService.update(product);
-
 
         if (success) {
             req.setAttribute("success", true);

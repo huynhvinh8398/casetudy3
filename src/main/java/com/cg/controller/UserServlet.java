@@ -144,50 +144,55 @@ public class UserServlet extends HttpServlet {
         boolean isPassword = ValidateUtils.isPasswordvalid(password);
         boolean exitsEmail = userService.existsByEmail(email);
         boolean exitsPhone = userService.existsByPhone(phone);
-        if (exitsEmail) {
+        if (fullname.equals("") &&
+                username.equals("") &&
+                password.equals("") &&
+                phone.equals("") &&
+                email.equals("") &&
+                address.equals("")) {
+            errors.add("Không được để trống Phải nhập đầy đủ thông tin");
+        }
+        else if (fullname.equals("")) {
+            errors.add("fullname không được để trống");
+        }
+        else if (username.equals("")) {
+            errors.add("username không được để trống");
+        }
+        else if (password.equals("")) {
+            errors.add("password không được để trống");
+        }
+        else   if (phone.equals("")) {
+            errors.add("phone không được để trống");
+        }
+        else   if (email.equals("")) {
+            errors.add("email không được để trống");
+        }
+        else   if (password.equals("")) {
+            errors.add("password không được để trống");
+        }
+        else if (address.equals("")){
+            errors.add("địa chỉ không được để trống");
+        }
+      else   if (exitsEmail) {
             errors.add("Email đã tồn tại vui lòng nhập email khác");
         }
-        if (exitsPhone) {
+       else if (exitsPhone) {
             errors.add("Phone đã tồn tại vui lòng nhập phone khác");
         }
-            if (!isPhone) {
-                errors.add("Số điện thoại sai định dạng (gồm 10 số và bắt đầu bằng số 0)");
+        else     if (!isPhone) {
+                errors.add("Số điện thoại sai định dạng (gồm 10 hoặc 11 số và bắt đầu bằng số 0)");
             }
-            if (!isEmail) {
+          else   if (!isEmail) {
                 errors.add("email sai định dạng (vd: vinhhuynh123@gmail.com)"); //có thể bao gồm dấu chấm và dấu gạch dưới không gồm các kí tự đặc biệt
             }
-            if (!isUsername) {
+         else    if (!isUsername) {
                 errors.add("username sai định dạng (bắt đầu bằng chữ cái thường tối thiếu 3 và < 16 kí tự)");
             }
-            if (!isPassword) {
+         else    if (!isPassword) {
                 errors.add("mật khẩu sai định dạng (Tối thiểu 8 kí tự, ít nhất 1 chữ,1 số và 1 kí tự đặc biệt)");
             }
-            if (fullname.equals("") ||
-                    username.equals("") ||
-                    password.equals("") ||
-                    phone.equals("") ||
-                    email.equals("") ||
-                    address.equals("")) {
-                errors.add("Không được để trống Phải nhập đầy đủ thông tin");
-            }
-            if (fullname.equals("")) {
-                errors.add("fullname không được để trống");
-            }
-            if (username.equals("")) {
-                errors.add("username không được để trống");
-            }
-            if (password.equals("")) {
-                errors.add("password không được để trống");
-            }
-            if (phone.equals("")) {
-                errors.add("phone không được để trống");
-            }
-            if (email.equals("")) {
-                errors.add("email không được để trống");
-            }
-            if (password.equals("")) {
-                errors.add("password không được để trống");
-            }
+
+
             boolean success = false;
 
             if (errors.size() == 0) {
@@ -220,34 +225,39 @@ public class UserServlet extends HttpServlet {
 
 
         List<String> errors = new ArrayList<>();
-
+        boolean isUsername = ValidateUtils.isUsernameValid(username);
         boolean isEmail = ValidateUtils.isEmailValid(email);
         boolean isPhone = ValidateUtils.isPhoneValid(phone);
-        if (!isPhone) {
-            errors.add("Số điện thoại không hợp lệ");
-        }
-        if (!isEmail) {
-            errors.add("email không hợp lệ");
-        }
-//      User  user = new User(fullname,username, password, phone, email, address);
-        if (fullName.equals("") ||
-                username.equals("") ||
-                phone.equals("") ||
-                email.equals("") ||
+        if (fullName.equals("") &&
+                username.equals("") &&
+                phone.equals("") &&
+                email.equals("") &&
                 address.equals("")) {
             errors.add("Không được để trống Phải nhập đầy đủ thông tin");
         }
-        if (fullName.equals("")) {
+      else   if (fullName.equals("")) {
             errors.add("fullname không được để trống");
         }
-        if (username.equals("")) {
+      else   if (username.equals("")) {
             errors.add("username không được để trống");
         }
-        if (phone.equals("")) {
+       else if (phone.equals("")) {
             errors.add("phone không được để trống");
         }
-        if (email.equals("")) {
+       else if (email.equals("")) {
             errors.add("email không được để trống");
+        }
+       else if (address.equals("")){
+           errors.add("địa chỉ không được để trống");
+        }
+        else    if (!isUsername) {
+            errors.add("username sai định dạng (bắt đầu bằng chữ cái thường tối thiếu 3 và < 16 kí tự)");
+        }
+        else if (!isPhone) {
+            errors.add("Số điện thoại sai định dạng (gồm 10 hoặc 11 số và bắt đầu bằng số 0)");
+        }
+       else if (!isEmail) {
+            errors.add("email sai định dạng (vd: vinhhuynh123@gmail.com)"); //có thể bao gồm dấu chấm và dấu gạch dưới không gồm các kí tự đặc biệt
         }
         boolean success = false;
         if (errors.size() == 0) {
